@@ -1,9 +1,9 @@
 package com.test.movietestapp.data.repository
 
-import com.test.movietestapp.presentation.base.model.BaseModel
+import com.test.movietestapp.presentation.model.MovieResponseModel
 import io.reactivex.Single
 
 interface MainRepository {
 
-    fun getInfo(): Single<BaseModel>
+    fun getMovies(page: Int?): Single<MovieResponseModel>
 }

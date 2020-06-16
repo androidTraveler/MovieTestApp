@@ -2,6 +2,7 @@ package com.test.movietestapp.di
 
 import com.test.movietestapp.data.network.config.DefaultNetworkConfig
 import com.test.movietestapp.data.network.factory.RxErrorHandlingCallAdapterFactory
+import com.test.movietestapp.data.network.service.ApiService
 import okhttp3.OkHttpClient
 import org.koin.android.module.AndroidModule
 import retrofit2.Retrofit
@@ -18,6 +19,8 @@ class NetworkModule : AndroidModule() {
         provide { provideGsonConverterFactory() }
 
         provide { DefaultNetworkConfig() }
+
+        provide { provideApiService(get()) }
     }
 
     private fun provideGsonConverterFactory() = GsonConverterFactory.create()
@@ -40,5 +43,8 @@ class NetworkModule : AndroidModule() {
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxErrorHandlingCallAdapterFactory.create())
             .build()
+
+    private fun provideApiService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
 
 }

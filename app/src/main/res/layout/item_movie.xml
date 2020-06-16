@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_main_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dim_small"
+    android:background="@drawable/bg_movie_item"
+    android:orientation="vertical"
+    android:padding="@dimen/dim_medium">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/TitleTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Movie title long long long long long long long long long long long long long long long long long long long long long" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dim_medium"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_thumbnail"
+            android:layout_width="@dimen/size_thumbnail"
+            android:layout_height="@dimen/size_logo"
+            android:layout_gravity="top"
+            android:layout_marginEnd="@dimen/dim_medium"
+            tools:background="@drawable/ic_no_icon" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_overview"
+                style="@style/SubTitleTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dim_medium"
+                tools:text="overview overview overview overview overview overview" />
+
+            <TextView
+                android:id="@+id/tv_genre"
+                style="@style/TextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_small"
+                tools:text="Genre Genre Genre GenreGenre Genre Genre Genre" />
+
+            <TextView
+                android:id="@+id/tv_popularity"
+                style="@style/SubTitleTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_small"
+                android:textColor="@color/color_accent"
+                tools:text="Popularity" />
+
+            <TextView
+                android:id="@+id/tv_release_date"
+                style="@style/SubTitleTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_small"
+                android:textColor="@color/color_accent"
+                tools:text="Release date" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

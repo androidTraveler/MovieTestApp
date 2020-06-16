@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">MovieTestApp</string>
     <string name="transition_name_logo">logo</string>
+
+    <!--  Dialogs  -->
+    <string name="alert_no_internet_title">No Internet Connection</string>
+    <string name="alert_no_internet_message">Make sure that Wi-Fi or mobile data is turned on, then pull to refresh.</string>
+    <string name="alert_ok">OK</string>
+
+    <!--  Info messages  -->
+    <string name="error_no_data">Something went wrong. Try to refresh the page.</string>
+    <string name="error_no_more_movies">No more movies to load.</string>
+
+    <!--  Main Activity  -->
+    <string name="release_date">Release date:\n%s</string>
+    <string name="popularity">Popularity: %s</string>
 </resources>

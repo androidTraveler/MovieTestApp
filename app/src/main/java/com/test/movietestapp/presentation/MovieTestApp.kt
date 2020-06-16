@@ -15,7 +15,8 @@ class MovieTestApp : Application() {
                 ActivityModule(),
                 UseCaseModule(),
                 NetworkModule(),
-                RepositoryModule()
+                RepositoryModule(),
+                TransformerModule()
             )
         )
     }

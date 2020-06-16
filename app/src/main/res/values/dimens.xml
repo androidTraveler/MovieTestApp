@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // text sizes
+    <dimen name="ts_large">20sp</dimen>
+    <dimen name="ts_medium">16sp</dimen>
+    <dimen name="ts_small">12sp</dimen>
+
+    // padding/margin sizes
+    <dimen name="dim_small">4dp</dimen>
+    <dimen name="dim_medium">8dp</dimen>
+    <dimen name="dim_large">16dp</dimen>
+
+    // other sizes
+    <dimen name="size_thumbnail">120dp</dimen>
+    <dimen name="size_logo">180dp</dimen>
+</resources>

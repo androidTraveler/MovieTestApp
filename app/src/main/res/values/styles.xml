@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/color_accent</item>
     </style>
 
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/bg_main</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="android:navigationBarColor">@color/color_primary</item>
+    </style>
+
 </resources>

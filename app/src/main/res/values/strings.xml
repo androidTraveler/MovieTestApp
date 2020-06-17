@@ -5,6 +5,8 @@
     <!--  Dialogs  -->
     <string name="alert_no_internet_title">No Internet Connection</string>
     <string name="alert_no_internet_message">Make sure that Wi-Fi or mobile data is turned on, then pull to refresh.</string>
+    <string name="alert_retry_message">Make sure that Wi-Fi or mobile data is turned on, then try again.</string>
+    <string name="alert_refresh">Refresh</string>
     <string name="alert_ok">OK</string>
 
     <!--  Info messages  -->
@@ -14,4 +16,5 @@
     <!--  Main Activity  -->
     <string name="release_date">Release date:\n%s</string>
     <string name="popularity">Popularity: %s</string>
+    <string name="genre_not_specified">[genre not specified]</string>
 </resources>

@@ -7,9 +7,10 @@ interface SplashContract {
 
     interface View : BaseView {
         fun startMainActivity()
+        fun showNetworkPopupWithRetry()
     }
 
     interface SplashPresenter : Presenter<View> {
-        fun startSplashTask()
+        fun startSplashTask(networkConnected: Boolean)
     }
 }

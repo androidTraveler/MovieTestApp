@@ -6,6 +6,6 @@ import org.koin.android.module.AndroidModule
 class TransformerModule : AndroidModule() {
 
     override fun context() = applicationContext {
-        provide { MoviesTransformer() }
+        provide { MoviesTransformer(get()) }
     }
 }

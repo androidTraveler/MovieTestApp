@@ -36,7 +36,8 @@ class MovieAdapter(private val context: Context, private val listener: OnItemCli
         holder.bind(items[position], listener)
         holder.tvTitle.text = items[position].title
         holder.tvOverview.text = items[position].overview
-        holder.tvGenre.text = "genre" //TODO implement genre
+        holder.tvGenre.text =
+            if (items[position].genres.isNullOrEmpty()) context.getString(R.string.genre_not_specified) else items[position].genres.toString()
         holder.tvReleaseDate.text =
             context.getString(R.string.release_date, items[position].releaseDate)
         holder.tvPopularity.text =

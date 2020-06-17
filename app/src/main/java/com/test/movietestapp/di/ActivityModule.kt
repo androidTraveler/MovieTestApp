@@ -15,7 +15,7 @@ class ActivityModule : AndroidModule() {
 
     override fun context() = applicationContext {
         context(name = CTX_SPLASH_ACTIVITY) {
-            provide { SplashPresenter() } bind (SplashContract.SplashPresenter::class)
+            provide { SplashPresenter(get(), get()) } bind (SplashContract.SplashPresenter::class)
         }
         context(name = CTX_MAIN_ACTIVITY) {
             provide { MainPresenter(get()) } bind (MainContract.MainPresenter::class)

@@ -40,8 +40,8 @@ class MoviesResponse {
         @SerializedName("original_title")
         var originalTitle: String? = null
 
-        @SerializedName("")
-        var genreIds: List<Pair<Int?, Int?>?>? = null
+        @SerializedName("genre_ids")
+        var genreIds: List<Int>? = null
 
         @SerializedName("title")
         var title: String? = null

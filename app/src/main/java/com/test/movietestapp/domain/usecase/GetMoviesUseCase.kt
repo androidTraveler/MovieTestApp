@@ -1,6 +1,6 @@
 package com.test.movietestapp.domain.usecase
 
-import com.test.movietestapp.data.repository.MainRepository
+import com.test.movietestapp.data.repository.remote.MainRepository
 import com.test.movietestapp.domain.base.UseCase
 import com.test.movietestapp.presentation.model.MovieResponseModel
 import io.reactivex.Single

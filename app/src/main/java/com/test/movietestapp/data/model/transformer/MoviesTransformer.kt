@@ -1,6 +1,7 @@
 package com.test.movietestapp.data.model.transformer
 
 import com.test.movietestapp.data.model.response.MoviesResponse
+import com.test.movietestapp.data.repository.local.LocalDataRepository
 import com.test.movietestapp.presentation.model.MovieModel
 import com.test.movietestapp.presentation.model.MovieResponseModel
 import io.reactivex.Observable
@@ -8,7 +9,7 @@ import io.reactivex.Single
 import io.reactivex.SingleTransformer
 import io.reactivex.functions.Function3
 
-class MoviesTransformer {
+class MoviesTransformer(private val localDataRepository: LocalDataRepository) {
 
     fun transformMovieResponseToMovieResponseModel(): SingleTransformer<MoviesResponse, MovieResponseModel> {
         return SingleTransformer { upstream ->
@@ -41,11 +42,17 @@ class MoviesTransformer {
             item?.backdropPath,
             item?.originalLanguage,
             item?.originalTitle,
-            null, //TODO solve genre
+            setGenres(item?.genreIds),
             item?.title,
             item?.voteAverage,
             item?.overview,
             item?.releaseDate
         )
+    }
+
+    private fun setGenres(genres: List<Int>?): List<String?> {
+        val list: MutableList<String?> = mutableListOf()
+        genres?.forEach { list.add(localDataRepository.getLocalGenre(it)) }
+        return list.toList()
     }
 }

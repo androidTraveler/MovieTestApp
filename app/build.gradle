@@ -64,6 +64,9 @@ dependencies {
     implementation "com.bluelinelabs:logansquare:$logansquare_version"
     implementation "com.github.aurae.retrofit2:converter-logansquare:$logansquare_converter_version"
 
+    //Data
+    implementation "com.orhanobut:hawk:$hawk_version"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

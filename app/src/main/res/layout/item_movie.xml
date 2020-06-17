@@ -36,20 +36,20 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_overview"
-                style="@style/SubTitleTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/dim_medium"
-                tools:text="overview overview overview overview overview overview" />
-
-            <TextView
                 android:id="@+id/tv_genre"
                 style="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dim_small"
                 tools:text="Genre Genre Genre GenreGenre Genre Genre Genre" />
+
+            <TextView
+                android:id="@+id/tv_overview"
+                style="@style/SubTitleTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dim_medium"
+                tools:text="overview overview overview overview overview overview" />
 
             <TextView
                 android:id="@+id/tv_popularity"

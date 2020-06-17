@@ -10,7 +10,7 @@ class MovieModel(
     var backdropPath: String?,
     var originalLanguage: String?,
     var originalTitle: String?,
-    var genreIds: List<Int>?,
+    var genres: List<String?>?,
     var title: String?,
     var voteAverage: Float?,
     var overview: String?,

@@ -7,5 +7,6 @@ class RestConst {
         const val UPCOMING_MOVIES_URL = "movie/upcoming"
         const val GENRE_MOVIE_URL = "genre/movie/list"
         const val GENRE_TV_URL = "genre/tv/list"
+        const val SEARCH_MOVIES_URL = "search/movie"
     }
 }

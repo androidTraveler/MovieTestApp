@@ -25,7 +25,8 @@
             android:layout_height="?actionBarSize"
             android:layout_gravity="end"
             android:padding="@dimen/dim_medium"
-            android:src="@android:drawable/ic_menu_search" />
+            android:src="@android:drawable/ic_menu_search"
+            android:transitionName="@string/transition_name_search" />
 
     </FrameLayout>
 

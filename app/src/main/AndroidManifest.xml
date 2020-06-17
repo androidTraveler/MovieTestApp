@@ -35,6 +35,10 @@
             android:name=".presentation.ui.details.DetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".presentation.ui.search.SearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

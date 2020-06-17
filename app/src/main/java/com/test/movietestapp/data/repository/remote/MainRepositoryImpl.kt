@@ -24,4 +24,9 @@ class MainRepositoryImpl(
             BiFunction { movieGenres, tvGenres -> Pair(movieGenres, tvGenres) }
         )
     }
+
+    override fun searchMovies(page: Int?, query: String): Single<MovieResponseModel> {
+        return apiService.searchMovies(page, query)
+            .compose(movieTransformer.transformMovieResponseToMovieResponseModel())
+    }
 }

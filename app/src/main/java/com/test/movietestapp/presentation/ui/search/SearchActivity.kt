@@ -1,8 +1,10 @@
-package com.test.movietestapp.presentation.ui.main
+package com.test.movietestapp.presentation.ui.search
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,43 +17,27 @@ import com.test.movietestapp.presentation.model.MovieModel
 import com.test.movietestapp.presentation.ui.details.DetailsActivity
 import com.test.movietestapp.presentation.ui.main.adapter.MovieAdapter
 import com.test.movietestapp.presentation.ui.main.adapter.PaginationScrollListener
-import com.test.movietestapp.presentation.ui.search.SearchActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.item_movie.view.*
 import org.koin.android.ext.android.inject
 
-class MainActivity : BaseActivity<MainContract.View, MainContract.MainPresenter>(),
-    MainContract.View, MovieAdapter.OnItemClickListener {
+class SearchActivity : BaseActivity<SearchContract.View, SearchContract.SearchPresenter>(),
+    SearchContract.View, MovieAdapter.OnItemClickListener {
 
     private val movieAdapter = MovieAdapter(this, this)
     var isLastPage: Boolean = false
 
-    override val contextName = ActivityModule.CTX_MAIN_ACTIVITY
+    override val contextName = ActivityModule.CTX_SEARCH_ACTIVITY
 
-    override val presenter by inject<MainContract.MainPresenter>()
+    override val presenter by inject<SearchContract.SearchPresenter>()
 
-    override val layoutResource: Int = R.layout.activity_main
+    override val layoutResource: Int = R.layout.activity_search
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initUI()
-        loadDataFromServer()
-    }
-
-    private fun initUI() {
         setUpRecycler()
         setUpRefresher()
-        iv_search.setOnClickListener {
-            val intent = Intent(this, SearchActivity::class.java)
-            val p1 = Pair(iv_search as View?, getString(R.string.transition_name_search))
-            val p2 = Pair(iv_logo as View?, getString(R.string.transition_name_logo))
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, p1, p2)
-            startActivity(intent, options.toBundle())
-        }
-    }
-
-    private fun loadDataFromServer() {
-        presenter.loadDataFromServer(isNetworkConnected())
+        setUpSearchView()
     }
 
     private fun setUpRecycler() {
@@ -74,7 +60,26 @@ class MainActivity : BaseActivity<MainContract.View, MainContract.MainPresenter>
     }
 
     private fun setUpRefresher() {
-        sr_refresh.setOnRefreshListener { loadDataFromServer() }
+        sr_refresh.setOnRefreshListener { searchMovies() }
+    }
+
+    private fun setUpSearchView() {
+        sv_search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            OnQueryTextListener {
+
+            override fun onQueryTextChange(s: String): Boolean {
+                return true
+            }
+
+            override fun onQueryTextSubmit(s: String): Boolean {
+                searchMovies()
+                return true
+            }
+        })
+    }
+
+    private fun searchMovies() {
+        presenter.searchMovies(isNetworkConnected(), sv_search.query.toString().trim())
     }
 
     override fun showRefresh() {
@@ -86,6 +91,7 @@ class MainActivity : BaseActivity<MainContract.View, MainContract.MainPresenter>
     }
 
     override fun fillData(moviesList: MutableList<MovieModel>) {
+        tv_message.text = ""
         movieAdapter.replaceData(moviesList)
     }
 
@@ -97,8 +103,20 @@ class MainActivity : BaseActivity<MainContract.View, MainContract.MainPresenter>
         toast(getString(R.string.error_no_data))
     }
 
+    override fun errorNoMoviesByQuery() {
+        val message = getString(R.string.no_movie_by_query)
+        tv_message.text = message
+        toast(message)
+    }
+
     override fun showNoMoreMovies() {
         toast(getString(R.string.error_no_more_movies))
+    }
+
+    override fun showEmptyQuery() {
+        val message = getString(R.string.provide_query)
+        tv_message.text = message
+        toast(message)
     }
 
     override fun changeLastPage(isLastPage: Boolean) {

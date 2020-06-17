@@ -2,6 +2,7 @@
     <string name="app_name">MovieTestApp</string>
     <string name="transition_name_logo">logo</string>
     <string name="transition_name_title">title</string>
+    <string name="transition_name_search">search</string>
 
     <!--  Dialogs  -->
     <string name="alert_no_internet_title">No Internet Connection</string>
@@ -25,4 +26,10 @@
     <string name="adult">For adults:</string>
     <string name="yes">yes</string>
     <string name="no">no</string>
+
+    <!--  Search Activity  -->
+    <string name="search_hint">Type movie name</string>
+    <string name="start_search">Click on search button to start searching</string>
+    <string name="provide_query">Query must be provided</string>
+    <string name="no_movie_by_query">No movies found by this query</string>
 </resources>

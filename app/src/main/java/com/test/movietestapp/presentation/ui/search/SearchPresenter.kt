@@ -1,21 +1,29 @@
-package com.test.movietestapp.presentation.ui.main
+package com.test.movietestapp.presentation.ui.search
 
-import com.test.movietestapp.domain.usecase.GetMoviesUseCase
+import com.test.movietestapp.domain.usecase.SearchMoviesUseCase
 import com.test.movietestapp.presentation.base.view.BasePresenter
 import com.test.movietestapp.presentation.model.MovieModel
 
-class MainPresenter(private val getMoviesUseCase: GetMoviesUseCase) :
-    BasePresenter<MainContract.View>(),
-    MainContract.MainPresenter {
+class SearchPresenter(private val searchMoviesUseCase: SearchMoviesUseCase) :
+    BasePresenter<SearchContract.View>(),
+    SearchContract.SearchPresenter {
 
     private var moviesList: MutableList<MovieModel>? = null
     private var page: Int? = null
     private var totalPages: Int? = null
+    private var query: String = ""
 
-    override fun loadDataFromServer(networkConnected: Boolean) {
+    override fun searchMovies(networkConnected: Boolean, query: String) {
+        if (query.trim().isEmpty()) {
+            view?.showEmptyQuery()
+            view?.hideRefresh()
+            return
+        }
         if (networkConnected) {
             view?.showRefresh()
-            getMoviesUseCase.execute(
+            this.query = query
+            searchMoviesUseCase.setQuery(query)
+            searchMoviesUseCase.execute(
                 onSuccess = { response ->
                     run {
                         page = response.page
@@ -42,8 +50,9 @@ class MainPresenter(private val getMoviesUseCase: GetMoviesUseCase) :
         }
         if (networkConnected) {
             view?.showRefresh()
-            getMoviesUseCase.setPage(page?.inc())
-            getMoviesUseCase.execute(
+            searchMoviesUseCase.setPage(page?.inc())
+            searchMoviesUseCase.setQuery(query)
+            searchMoviesUseCase.execute(
                 onSuccess = { response ->
                     run {
                         page = response.page
@@ -69,7 +78,8 @@ class MainPresenter(private val getMoviesUseCase: GetMoviesUseCase) :
             view?.changeLastPage(totalPages == page)
             view?.fillData(moviesList!!)
         } else {
-            view?.errorGetMovies()
+            view?.fillData(mutableListOf())
+            view?.errorNoMoviesByQuery()
         }
     }
 
@@ -82,5 +92,4 @@ class MainPresenter(private val getMoviesUseCase: GetMoviesUseCase) :
             view?.errorGetMovies()
         }
     }
-
 }

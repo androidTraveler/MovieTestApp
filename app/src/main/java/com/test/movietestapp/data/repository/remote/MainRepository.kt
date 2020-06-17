@@ -8,4 +8,5 @@ interface MainRepository {
 
     fun getMovies(page: Int?): Single<MovieResponseModel>
     fun getGenres(): Single<Pair<GenresResponse, GenresResponse>>
+    fun searchMovies(page: Int?, query: String): Single<MovieResponseModel>
 }

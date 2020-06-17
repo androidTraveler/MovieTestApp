@@ -1,10 +1,10 @@
-package com.test.movietestapp.presentation.ui.main
+package com.test.movietestapp.presentation.ui.search
 
 import com.test.movietestapp.presentation.base.view.BaseView
 import com.test.movietestapp.presentation.base.view.Presenter
 import com.test.movietestapp.presentation.model.MovieModel
 
-interface MainContract {
+interface SearchContract {
 
     interface View : BaseView {
         fun showRefresh()
@@ -12,12 +12,14 @@ interface MainContract {
         fun fillData(moviesList: MutableList<MovieModel>)
         fun addData(moviesList: MutableList<MovieModel>)
         fun errorGetMovies()
+        fun errorNoMoviesByQuery()
         fun showNoMoreMovies()
+        fun showEmptyQuery()
         fun changeLastPage(isLastPage: Boolean)
     }
 
-    interface MainPresenter : Presenter<View> {
+    interface SearchPresenter : Presenter<View> {
+        fun searchMovies(networkConnected: Boolean, query: String)
         fun loadMoreData(networkConnected: Boolean)
-        fun loadDataFromServer(networkConnected: Boolean)
     }
 }

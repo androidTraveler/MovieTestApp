@@ -9,12 +9,18 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET(RestConst.UPCOMING_MOVIES_URL)
-    fun getUpcomingMovies(@Query("page") page: Int?): Single<MoviesResponse>
-
     @GET(RestConst.GENRE_MOVIE_URL)
     fun getMovieGenres(): Single<GenresResponse>
 
     @GET(RestConst.GENRE_TV_URL)
     fun getTVGenres(): Single<GenresResponse>
+
+    @GET(RestConst.UPCOMING_MOVIES_URL)
+    fun getUpcomingMovies(@Query("page") page: Int?): Single<MoviesResponse>
+
+    @GET(RestConst.SEARCH_MOVIES_URL)
+    fun searchMovies(
+        @Query("page") page: Int?,
+        @Query("query") query: String
+    ): Single<MoviesResponse>
 }

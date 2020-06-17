@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MovieTestApp</string>
     <string name="transition_name_logo">logo</string>
+    <string name="transition_name_title">title</string>
 
     <!--  Dialogs  -->
     <string name="alert_no_internet_title">No Internet Connection</string>
@@ -17,4 +18,11 @@
     <string name="release_date">Release date:\n%s</string>
     <string name="popularity">Popularity: %s</string>
     <string name="genre_not_specified">[genre not specified]</string>
+
+    <!--  Details Activity  -->
+    <string name="original_title">Original title:</string>
+    <string name="original_language">Original language:</string>
+    <string name="adult">For adults:</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
 </resources>

@@ -80,7 +80,7 @@ class MovieAdapter(private val context: Context, private val listener: OnItemCli
         fun bind(item: MovieModel, listener: OnItemClickListener?) {
             itemView.setOnClickListener {
                 if (allowClick) {
-                    listener?.onListItemClick(item)
+                    listener?.onListItemClick(item, itemView)
                     allowClick = false
                     Observable.timer(300, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
@@ -92,7 +92,7 @@ class MovieAdapter(private val context: Context, private val listener: OnItemCli
     }
 
     interface OnItemClickListener {
-        fun onListItemClick(item: MovieModel)
+        fun onListItemClick(item: MovieModel, view: View)
     }
 
 }

@@ -1,5 +1,9 @@
 package com.test.movietestapp.presentation.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 class MovieModel(
     var popularity: Float?,
     var voteCount: Int?,
@@ -15,4 +19,4 @@ class MovieModel(
     var voteAverage: Float?,
     var overview: String?,
     var releaseDate: String?
-)
+) : Parcelable

@@ -1,5 +1,7 @@
 package com.test.movietestapp.di
 
+import com.test.movietestapp.presentation.ui.details.DetailsContract
+import com.test.movietestapp.presentation.ui.details.DetailsPresenter
 import com.test.movietestapp.presentation.ui.main.MainContract
 import com.test.movietestapp.presentation.ui.main.MainPresenter
 import com.test.movietestapp.presentation.ui.splash.SplashContract
@@ -11,6 +13,7 @@ class ActivityModule : AndroidModule() {
     companion object {
         const val CTX_SPLASH_ACTIVITY = "SplashActivity"
         const val CTX_MAIN_ACTIVITY = "MainActivity"
+        const val CTX_DETAILS_ACTIVITY = "DetailsActivity"
     }
 
     override fun context() = applicationContext {
@@ -19,6 +22,9 @@ class ActivityModule : AndroidModule() {
         }
         context(name = CTX_MAIN_ACTIVITY) {
             provide { MainPresenter(get()) } bind (MainContract.MainPresenter::class)
+        }
+        context(name = CTX_DETAILS_ACTIVITY) {
+            provide { DetailsPresenter() } bind (DetailsContract.DetailsPresenter::class)
         }
 
     }
